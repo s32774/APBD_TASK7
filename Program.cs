@@ -1,9 +1,11 @@
 using APBD_TASK7.Data;
 using Microsoft.EntityFrameworkCore;
+using APBD_TASK7.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddScoped<IPcService, PcService>();
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
